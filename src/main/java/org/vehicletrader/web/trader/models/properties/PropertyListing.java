@@ -3,6 +3,7 @@ package org.vehicletrader.web.trader.models.properties;
 import jakarta.persistence.*;
 import lombok.*;
 import org.vehicletrader.web.trader.models.Location;
+import org.vehicletrader.web.trader.models.users.User;
 import org.vehicletrader.web.trader.models.vehicles.specs.Extra;
 
 import java.util.Set;
@@ -22,6 +23,11 @@ public class PropertyListing {
     @Column(name = "description")
     @Setter
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "creator_id")
+    @Setter
+    private User creator;
 
     @Column(name = "price")
     @Setter
