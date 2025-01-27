@@ -3,7 +3,7 @@ package org.vehicletrader.web.trader.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.vehicletrader.web.trader.exceptions.EntityNotFoundException;
-import org.vehicletrader.web.trader.models.VehicleListing;
+import org.vehicletrader.web.trader.models.vehicles.VehicleListing;
 import org.vehicletrader.web.trader.repositories.contracts.VehicleListingRepository;
 import org.vehicletrader.web.trader.services.contracts.VehicleListingService;
 

@@ -1,15 +1,15 @@
-package org.vehicletrader.web.trader.models.users;
+package org.vehicletrader.web.trader.models.vehicles.specs;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "user_roles")
+@Table(name = "vehicle_transmissions")
 @Getter
 @NoArgsConstructor
 @RequiredArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Role {
+public class Transmission {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,8 +17,8 @@ public class Role {
     @EqualsAndHashCode.Include
     private int id;
 
-    @Column(name = "role")
+    @Column(name = "transmission")
     @NonNull
     @Setter
-    private String role;
+    private String transmission;
 }

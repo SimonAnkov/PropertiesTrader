@@ -1,11 +1,12 @@
-package org.vehicletrader.web.trader.models;
+package org.vehicletrader.web.trader.models.vehicles;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.vehicletrader.web.trader.models.specs.Color;
-import org.vehicletrader.web.trader.models.specs.Model;
-import org.vehicletrader.web.trader.models.specs.Type;
+import org.vehicletrader.web.trader.models.Location;
 import org.vehicletrader.web.trader.models.users.User;
+import org.vehicletrader.web.trader.models.vehicles.specs.*;
+
+import java.util.Set;
 
 @Entity
 @Table(name = "vehicle_listings")
@@ -26,7 +27,7 @@ public class VehicleListing {
     private Type type;
 
     @ManyToOne
-    @JoinColumn(name = "type_id")
+    @JoinColumn(name = "model_id")
     @Setter
     private Model model;
 
@@ -44,6 +45,24 @@ public class VehicleListing {
     @Setter
     private Double mileage;
 
+    @ManyToOne
+    @JoinColumn(name = "transmission_id")
+    @Setter
+    private Transmission transmission;
+
+    @ManyToOne
+    @JoinColumn(name = "fuel_id")
+    @Setter
+    private Fuel fuel;
+
+    @ManyToMany
+    @JoinTable(
+            name = "vehicle_extras_specified",
+            joinColumns = @JoinColumn(name = "vehicle_listing_id"),
+            inverseJoinColumns = @JoinColumn(name = "extra_id")
+    )
+    private Set<Extra> extras;
+
     @Column(name = "description")
     @Setter
     private String description;
@@ -51,4 +70,11 @@ public class VehicleListing {
     @Column(name = "price")
     @Setter
     private Double price;
+
+    @ManyToOne
+    @JoinColumn(name = "location_id")
+    private Location location;
+
+    @Column(name = "address")
+    private String address;
 }

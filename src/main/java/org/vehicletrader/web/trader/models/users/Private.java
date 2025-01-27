@@ -6,7 +6,7 @@ import jakarta.persistence.Table;
 import lombok.*;
 
 @Entity
-@Table(name = "private_users")
+@Table(name = "users_private")
 @Getter
 @Setter
 @NoArgsConstructor

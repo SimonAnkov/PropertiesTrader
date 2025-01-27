@@ -1,15 +1,15 @@
-package org.vehicletrader.web.trader.models.specs;
+package org.vehicletrader.web.trader.models.vehicles.specs;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "vehicle_types")
+@Table(name = "vehicle_brands")
 @Getter
 @NoArgsConstructor
 @RequiredArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Type {
+public class Make {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,8 +17,8 @@ public class Type {
     @EqualsAndHashCode.Include
     private int id;
 
-    @Column(name = "type")
-    @Setter
+    @Column(name = "brand")
     @NonNull
-    private String type;
+    @Setter
+    private String brand;
 }

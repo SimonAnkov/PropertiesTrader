@@ -1,12 +1,11 @@
 package org.vehicletrader.web.trader.models.users;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
+import org.vehicletrader.web.trader.models.Location;
 
 @Entity
-@Table(name = "company_users")
+@Table(name = "users_company")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -16,6 +15,10 @@ public class Company extends User {
     @Column(name = "company_name")
     @NonNull
     private String companyName;
+
+    @ManyToOne
+    @JoinColumn(name = "location_id")
+    private Location location;
 
     @Column(name = "company_address")
     @NonNull

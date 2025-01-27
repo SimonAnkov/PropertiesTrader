@@ -1,30 +1,23 @@
-package org.vehicletrader.web.trader.models.specs;
+package org.vehicletrader.web.trader.models.vehicles.specs;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "models")
+@Table(name = "vehicle_fuels")
 @Getter
 @NoArgsConstructor
 @RequiredArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Model {
-
+public class Fuel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     @EqualsAndHashCode.Include
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "brand")
+    @Column(name = "fuel")
     @NonNull
     @Setter
-    private Make make;
-
-    @Column(name = "model")
-    @NonNull
-    @Setter
-    private String model;
+    private String fuel;
 }

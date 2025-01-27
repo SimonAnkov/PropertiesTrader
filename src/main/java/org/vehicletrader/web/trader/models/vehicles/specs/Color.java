@@ -1,10 +1,10 @@
-package org.vehicletrader.web.trader.models.specs;
+package org.vehicletrader.web.trader.models.vehicles.specs;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "colors")
+@Table(name = "vehicle_colors")
 @Getter
 @NoArgsConstructor
 @RequiredArgsConstructor

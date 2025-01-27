@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users_principal")
 @Inheritance(strategy = InheritanceType.JOINED)
 @Getter
 @NoArgsConstructor
@@ -32,6 +32,11 @@ public class User {
     @NonNull
     @Setter
     private String phone;
+
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    @Setter
+    private Role role;
 
     @Column(name = "password")
     @NonNull

@@ -1,6 +1,6 @@
 package org.vehicletrader.web.trader.services.contracts;
 
-import org.vehicletrader.web.trader.models.VehicleListing;
+import org.vehicletrader.web.trader.models.vehicles.VehicleListing;
 
 import java.util.List;
 

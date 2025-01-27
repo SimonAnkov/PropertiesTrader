@@ -1,24 +1,24 @@
-package org.vehicletrader.web.trader.models.specs;
+package org.vehicletrader.web.trader.models;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 @Entity
-@Table(name = "brands")
+@Table(name = "locations")
 @Getter
 @NoArgsConstructor
-@RequiredArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Make {
-
+public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     @EqualsAndHashCode.Include
     private int id;
 
-    @Column(name = "brand")
+    @Column(name = "city")
     @NonNull
-    @Setter
-    private String brand;
+    private String city;
 }
