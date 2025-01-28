@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "users_principal")
+@Table(name = "users_principal", uniqueConstraints = @UniqueConstraint(columnNames = {"username", "email", "phone"}))
 @Inheritance(strategy = InheritanceType.JOINED)
 @Getter
 @NoArgsConstructor

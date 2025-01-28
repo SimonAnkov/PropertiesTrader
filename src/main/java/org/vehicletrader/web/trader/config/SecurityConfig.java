@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -20,8 +19,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.vehicletrader.web.trader.filters.JwtAuthFilter;
-import org.vehicletrader.web.trader.repositories.contracts.UserInfoRepository;
-import org.vehicletrader.web.trader.services.UserInfoService;
 
 @DependsOn({"jwtAuthFilter"})
 @Configuration
@@ -30,19 +27,17 @@ import org.vehicletrader.web.trader.services.UserInfoService;
 public class SecurityConfig {
 
     private final JwtAuthFilter authFilter;
-    private final UserInfoRepository repository;
-    private final PasswordEncoder encoder;
+    private final UserDetailsService userInfoService;
 
     @Autowired
-    public SecurityConfig(JwtAuthFilter authFilter, @Lazy UserInfoRepository repository, @Lazy PasswordEncoder encoder) {
+    public SecurityConfig(JwtAuthFilter authFilter, UserDetailsService userInfoService) {
         this.authFilter = authFilter;
-        this.repository = repository;
-        this.encoder = encoder;
+        this.userInfoService = userInfoService;
     }
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return new UserInfoService(repository, encoder); // Ensure UserInfoService implements UserDetailsService
+        return userInfoService; // Ensure UserInfoService implements UserDetailsService
     }
 
     @Bean

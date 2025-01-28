@@ -10,11 +10,11 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-import org.vehicletrader.web.trader.services.JwtService;
-import org.vehicletrader.web.trader.services.UserInfoService;
+import org.vehicletrader.web.trader.services.contracts.JwtService;
 
 import java.io.IOException;
 
@@ -22,10 +22,10 @@ import java.io.IOException;
 public class JwtAuthFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
-    private final UserInfoService userDetailsService;
+    private final UserDetailsService userDetailsService;
 
     @Autowired
-    public JwtAuthFilter(JwtService jwtService, @Lazy UserInfoService userDetailsService) {
+    public JwtAuthFilter(JwtService jwtService, @Lazy UserDetailsService userDetailsService) {
         this.jwtService = jwtService;
         this.userDetailsService = userDetailsService;
     }
